@@ -1,0 +1,27 @@
+       <?php
+       $dbhost = "localhost";
+       $dbuser = "root";
+       $dbpass = "root";
+       $dberror1 = "Could not connect to the database";
+       
+       $conn = $mysql_connect($dbhost, $dbuser, $dbpass)or die($dberror1);
+       $select_db = mysql_select_db('players')or die($dberror1);
+       $query = "SELECT * FROM 'playerinfo' WHERE id='1';";
+       $fetch = mysql_query($query) or die (" could not find player!");
+ 
+	while ($row = mysql_fetch_assoc($fetch)) {
+        echo "<tr>";
+        echo "<td>" . $row["PlayerID"] . "</td>";
+        echo "<td>" . $row["PlayerName"] . "</td>";
+        echo "<td>" . $row["PlayerScore"] . "</td>";
+        echo "</tr>";
+        }
+        ?>
+        
+        
+        
+        
+        
+        
+        
+   
