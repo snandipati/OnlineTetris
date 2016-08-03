@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+<head>
+<title>Tetris</title>
+	<link type="text/css" rel="stylesheet" href="tetris.css"/>
+	<script type="text/javascript" src="jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="media.js"></script>
+	<script type="text/javascript" src="tetris.js"></script>
+	<script>//Script for the Help button
+function help(){
+	var myWindow = window.open("", "MsgWindow", "width=500, height=500");
+            myWindow.document.write("<p><strong><center><u>Tetris Game Instructions</u></strong></center> </br>1)Click on Start. </br>2)Start the game on the lowest level. As you play the game levels will go up, but you need to start at a low level to help you practice.</br> 4)Move the tetrominoes left and right with the arrow keys or buttons. Try to move the tetrominoes to get them to move together.<br/> 5)Understand the different tetrominoes. In traditional Tetris games there are seven different types of tetrominoes:I,O,L,J,S,Z,T.<br/> 6)Use the action button to rotate the tetrominoes to fit holes.<br/> 7)Complete lines to gain points and raise the level.<br/></p>");
+}
+
+function ajax_getscores(myWindow){
+var myWindow = window.open("", "MsgWindow", "width=500, height=500");
+	    myWindow.document.write('<body bgcolor=darkblue>');
+	    myWindow.document.write('<table id="myTable" width="100%" border="1">');
+	    myWindow.document.write('<tr>');
+	    myWindow.document.write('<td align=center><b>Name</b></td>');
+	    myWindow.document.write('<td align=center><b>Score</b></td>');
+	    myWindow.document.write('</tr>');
+	    myWindow.document.write('<tr><td id=td1></td><td id=td2 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td3></td><td id=td4 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td5></td><td id=td6 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td7></td><td id=td8 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td9></td><td id=td10 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td11></td><td id=td12 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td13></td><td id=td14 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td15></td><td id=td16 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td17></td><td id=td18 align=center></td></tr>');
+	    myWindow.document.write('<tr><td id=td19></td><td id=td20 align=center></td></tr>');
+    // Create the XMLHttpRequest object
+    var ajx = new XMLHttpRequest();
+    var sArray = new Array();
+    var name_str ="";
+    var score_str ="";
+    // Create some variables we need to send to our PHP file
+    ajx.open("GET", "search.php", true);
+    	    
+    //set event handler to check response state
+    ajx.onreadystatechange = function() 
+    {
+     if(ajx.readyState==4) {
+        if(ajx.status ==200) {
+           // if everything is ok, assign result into text area
+           if (ajx.responseText) {
+           sArray = $.parseJSON(ajx.responseText);
+           //myWindow.document.getElementById('myBody').innerHTML = ajx.responseText;
+           //myWindow.document.getElementById('myBody').innerHTML = sArray;
+           myWindow.document.getElementById('td1').innerHTML = sArray[0];
+           myWindow.document.getElementById('td2').innerHTML = sArray[1];
+           myWindow.document.getElementById('td3').innerHTML = sArray[2];
+           myWindow.document.getElementById('td4').innerHTML = sArray[3];
+           myWindow.document.getElementById('td5').innerHTML = sArray[4];
+           myWindow.document.getElementById('td6').innerHTML = sArray[5];
+           myWindow.document.getElementById('td7').innerHTML = sArray[6];
+           myWindow.document.getElementById('td8').innerHTML = sArray[7];
+           myWindow.document.getElementById('td9').innerHTML = sArray[8];
+           myWindow.document.getElementById('td10').innerHTML = sArray[9];
+           myWindow.document.getElementById('td11').innerHTML = sArray[10];
+           myWindow.document.getElementById('td12').innerHTML = sArray[11];
+           myWindow.document.getElementById('td13').innerHTML = sArray[12];
+           myWindow.document.getElementById('td14').innerHTML = sArray[13];
+           myWindow.document.getElementById('td15').innerHTML = sArray[14];
+           myWindow.document.getElementById('td16').innerHTML = sArray[15];
+           myWindow.document.getElementById('td17').innerHTML = sArray[16];
+           myWindow.document.getElementById('td18').innerHTML = sArray[17];
+           myWindow.document.getElementById('td19').innerHTML = sArray[18];
+           myWindow.document.getElementById('td20').innerHTML = sArray[19];
+           
+           } else {
+           myWindow.document.getElementById('myDiv').innerHTML = "No entries found";
+           }
+        }
+     }
+    };
+    myWindow.document.write('</table></body>');
+  ajx.send(null);
+}
+
+function hscores_table() {
+var myWindow = window.open("", "MsgWindow", "width=500, height=500");
+	    myWindow.document.write('<body bgcolor=grey>');
+	    myWindow.document.write('<table id="myTable" width="100%" border="1">');
+	    myWindow.document.write('<tr>');
+	    myWindow.document.write('<td align=center><b>Name</b></td>');
+	    myWindow.document.write('<td align=center><b>Score</b></td>');
+	    myWindow.document.write('<td align=center><b>Time</b></td>');
+	    myWindow.document.write('</tr>');
+           	myWindow.document.write('<tr><td id="tname"></td>');
+           	myWindow.document.write('<td id="tscore"></td></tr>');
+
+	    ajax_getscores(myWindow);    
+
+	    myWindow.document.write('</table></body>');
+	    
+}
+	
+</script>
+</head>	
+<body>
+<div id="container">
+	<div class="menu">
+	    <img class="menuLogo" src="images.jpg"></img>
+	    <br/><br/>
+	    <div class="button1">
+	     <input type="button" value="Help"onclick="help()">
+	    </div>
+
+	    <div class="button2">
+	     <input type="button" value="High Scores"onclick="ajax_getscores()">
+	    </div>
+   
+	    <div id="tetris-keys">
+	     <dl>
+	      <dt>Rotate&nbsp&nbsp&nbsp</dt>
+	      <!--<dd>&uarr;<dd>-->
+	      <img src="key-up.gif" width="15" height="15" alt="">
+	     </dl>
+	     <dl>
+	      <dt>Move&nbsp</dt>
+	      <!--<dd>&larr; &darr; &rarr;<dd>-->
+	      <img src="key-left.gif" width="15" height="15" alt="">
+	      <img src="key-down.gif" width="15" height="15" alt="">
+	      <img src="key-right.gif" width="15" height="15" alt="">
+	     </dl>
+	     <dl>
+	      <dt>Drop&nbsp&nbsp</dt>
+	      <!--<dd>Spacebar<dd>-->
+	      <img src="key-space.gif" width="44" height="15" alt="">
+	     </dl>
+	     
+	     <div class="clear"></div>
+	    </div>
+
+	</div>
+	<div id="tetris">
+	 <div id="tetris-wrap">
+	  <div id="tetris-wrap-inner">
+	   <div id="tetris-main"></div>
+	   <div id="tetris-overlay">
+	    <div id="tetris-message"></div>
+	   </div>
+	
+	   <div id="tetris-side">
+	    <div id="tetris-side-inner">
+	     <div id="tetris-next">
+	      <div id="tetris-next-inner"></div>
+	     </div>            
+	
+	     <div id="tetris-scores">
+	     
+	     <dl>
+	       <dt>Level:</dt>
+	       <dd id="tetris-level">1</dd>
+	      </dl>
+	    <!-- <dl>
+	       <dt>Score:</dt>
+	       <dd id="tetris-score">0</dd>
+	      </dl>-->
+	    
+	      <dl>
+	       <dt>Singles:</dt>
+	       <dd id="tetris-singles">0</dd>
+	      </dl>
+	      <dl>
+	       <dt>Doubles:</dt>
+	       <dd id="tetris-doubles">0</dd>
+	      </dl>
+	      <dl>
+	       <dt>Triples:</dt>
+	       <dd id="tetris-triples">0</dd>
+	      </dl>
+	      <dl>
+	       <dt>Tetris:</dt>
+	       <dd id="tetris-quads">0</dd></br></br></br>
+	      </dl>
+	     
+	       
+	 <div class="button3" style="text-align:center">   
+	 <input type="button" id="Sbutton" value="Start">
+	 <input type="button" id="Pbutton" value="Pause">
+	 <input type="button" id="Ebutton" value="End">
+	 </div>
+	 
+	 <form name="score-form" action="tetris-scores.php" method="post">
+	 Name<input type="text" id="name" name="Name"><br>
+	 Score<input type="text" id="score" name="Score" value=0><br>
+	 <input type="submit" id="sbtn" value="Submit">
+	 <input type="reset" id="cbtn" value="Clear">
+	</form>
+	 
+	<div class="clear"></div>
+	</div>
+	
+	</div>
+	</div>
+	
+	<div class="clear"></div>           
+	</div>
+	
+	
+	<!-- Sound effects and music -->
+        <audio src="sounds/tetris.ogg" autoplay="autoplay" loop='loop' id='sound-music'></audio> 
+        <audio src="sounds/drop.ogg" id="sound-drop"></audio> 
+        <audio src="sounds/gameover.ogg" id="sound-gameover"></audio> 
+        <audio src="sounds/line.ogg" id="sound-line"></audio> 
+       
+        
+
+	</div>
+	</div>
+	
+	</body>
+	</html>

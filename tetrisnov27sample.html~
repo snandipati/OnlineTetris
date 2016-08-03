@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+<head>
+<title>Tetris</title>
+	<link type="text/css" rel="stylesheet" href="tetris.css"/>
+	<script type="text/javascript" src="jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="media.js"></script>
+	<script type="text/javascript" src="tetris.js"></script>
+</head>
+<body>
+	<!--<div id="tetris">
+	<div id="tetris-wrap">
+	<div id="tetris-wrap-inner">-->
+	<div id="tetris-main"></div>
+	<div id="tetris-overlay">
+	<div id="tetris-message"></div></div>
+	
+	<div id="tetris-side">
+	<div id="tetris-side-inner">
+	<div id="tetris-next">
+	<div id="tetris-next-inner"></div>
+	</div>
+	
+	<div id="tetris-scores">
+	<dl>
+	<dt>Level:</dt>
+	<dd id="tetris-level">1</dd>
+	</dl>
+	<dl>
+	<dt>Score:</dt>
+	<dd id="tetris-score">0</dd>
+	</dl>
+	<dl>
+	<dt>Singles:</dt>
+	<dd id="tetris-singles">0</dd>
+	</dl>
+	<dl>
+	<dt>Doubles:</dt>
+	<dd id="tetris-doubles">0</dd>
+	</dl>
+	<dl>
+	<dt>Triples:</dt>
+	<dd id="tetris-triples">0</dd>
+	</dl>
+	<dl>
+	<dt>Tetris:</dt>
+	<dd id="tetris-quads">0</dd>
+	</dl>
+	<div class="clear"></div>
+	</div>
+	
+	
+	
+	<div id="tetris-keys">
+	<dl>
+	<dt>Rotate:</dt>
+	<dd>&uarr;<dd>
+	<!--<img src="key-up.gif" width="14" height="14" alt="">-->
+	</dl>
+	<dl>
+	<dt>Move:</dt>
+	<dd>&larr; &darr; &rarr;<dd>
+	<!--<img src="key-left.gif" width="14" height="14" alt="">
+	<img src="key-down.gif" width="14" height="14" alt="">
+	<img src="key-right.gif" width="14" height="14" alt="">-->
+	</dl>
+	<dl>
+	<dt>Drop:</dt>
+	<dd>Spacebar<dd>
+	<!--<img src="key-space.gif" width="44" height="13" alt="">-->
+	</dl>
+	<dl>
+	<dt>Pause:</dt>
+	<dd>Pause/Esc<dd>
+	</dl>
+	<div class="clear"></div>
+	</div>
+	
+	</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	<div>
+	<!-- Sound effects and music -->
+        <audio src="sounds/tetris.ogg" autoplay="autoplay" loop='loop' id='sound-music'></audio> 
+        <audio src="sounds/drop.ogg" id="sound-drop"></audio> 
+        <audio src="sounds/gameover.ogg" id="sound-gameover"></audio> 
+        <audio src="sounds/line.ogg" id="sound-line"></audio> 
+        <!--<p id="tetris-copyright">
+        <p>Copy right @Silpa</p>
+	</p>-->
+	</div>
+	</div>
+	</body>
+	</html>
