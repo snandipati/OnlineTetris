@@ -1,3 +1,3 @@
-COEN 276 - Project [Tetris]
+COEN 276 - WebProgramming I - Project Tetris
 
-HTML5,CSS, JS, PHP, MYSQL
+HTML5, CSS, JS, PHP, MYSQL
